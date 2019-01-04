@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
-    <title><%= title %></title>
+    <meta charset="utf-8">
+    <title>Super Sprinter 3000</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Super Sprinter 3000</h1>
+    <a href="/story">Add new User Story</a>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Story Title</th>
+        <th>User Story</th>
+        <th>Acceptance Criteria</th>
+        <th>Business value</th>
+        <th>Estimations</th>
+        <th>Status</th>
+      </tr>
+      <% if (storiesArr) { %>
+      <%  for (let i=0; i < storiesArr.length; i++){ %>
+      <%    let story = storiesArr[i]; %>
+         <tr>
+           <th><%= story.id %></th>
+           <th><%= story.title %></th>
+           <th><%= story.story %></th>
+           <th><%= story.criteria %></th>
+           <th><%= story.value %> points</th>
+           <th><%= story.estimations %>h</th>
+           <th><%= story.status %></th>
+         </tr>
+      <%  } %>
+      <% } %>
+      <!-- data here -->
+    </table>
   </body>
 </html>
