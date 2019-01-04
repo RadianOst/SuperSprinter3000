@@ -1,11 +1,16 @@
 class Story{
   constructor(storyData){
+    this._id = storyData.id;
     this._title = storyData.title;
     this._story = storyData.story;
     this._criteria = storyData.criteria;
     this._value = storyData.value;
     this._estimations = storyData.estimations;
     this._status = storyData.status;
+  }
+
+  get id(){
+    return this._id;
   }
 
   get title(){
@@ -56,3 +61,5 @@ class Story{
     this._status = value;
   }
 }
+
+module.exports = Story;
