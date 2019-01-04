@@ -16,6 +16,26 @@ class StoryDAO{
       })
     ];
   }
+
+  getStory(id){
+    return new Story({
+        id: id,
+        title: "Mama",
+        story: "Nice story",
+        criteria: "None",
+        value: 100,
+        estimations: 100,
+        status: ":)"
+      });
+  }
+
+  addStory(story){
+    return undefined;
+  }
+
+  updateStory(story){
+    return undefined;
+  }
 }
 
 module.exports = StoryDAO;
