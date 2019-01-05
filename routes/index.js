@@ -5,7 +5,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { storiesArr: storyDAO.getAllStories() });
+  storyDAO.getAllStories()
+   .then(function(result){
+     res.render('index', { storiesArr: result });
+   })
+   .catch(function(){
+     res.render('index', { storiesArr: [] });
+   })
 });
 
 module.exports = router;
