@@ -4,7 +4,7 @@ body {
 }
 
 h1{
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
 }
 
 table{
@@ -20,3 +20,25 @@ table th{
 table tr:nth-child(even) {
     background-color: #eee;
 }
+
+form{
+  margin-top: 5vh;
+}
+
+form label{
+  font-size: 1.2em;
+}
+ form input, textarea{
+   margin: 1vh 0;
+ }
+
+ form input[type="submit"]{
+   background-color: #fff;
+   border-radius: 6px;
+ }
+
+ form input[type="submit"]:hover{
+   background-color: rgb(39, 116, 32);
+   color: #fff;
+   cursor: pointer;
+ }
