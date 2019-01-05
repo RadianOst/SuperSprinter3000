@@ -14,4 +14,8 @@ router.get('/', function(req, res, next) {
    })
 });
 
+router.get('/story', function(req, res, next){
+  res.render('story');
+});
+
 module.exports = router;
