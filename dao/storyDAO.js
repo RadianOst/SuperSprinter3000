@@ -4,6 +4,7 @@ const { Pool } = require('pg');
 let storyDAO = {};
 
 const SELECT_ALL_QUERY = "SELECT * FROM stories";
+const SELECY_BY_ID_QUERY = "SELECT * FROM stories WHERE id=$1";
 const INSERT_QUERY = "INSERT INTO stories (title, story, criteria, value, estimations, status) " +
                      "VALUES ($1, $2, $3, $4, $5, 'planning')";
 
@@ -39,15 +40,19 @@ storyDAO.getAllStories = function(){
 }
 
 storyDAO.getStory = function(id){
-  return new Story({
-      id: id,
-      title: "Mama",
-      story: "Nice story",
-      criteria: "None",
-      value: 100,
-      estimations: 100,
-      status: ":)"
-    });
+  return new Promise(function(resolve, reject){
+    storyDAO.pool.connect((err, client, done) => {
+      if (err) throw err
+      client.query(SELECY_BY_ID_QUERY, [id])
+        .then(res => {
+          resolve(res.rows[0]);
+        })
+        .catch(e => {
+          console.error(e.stack);
+          reject();
+        })
+    })
+  });
 }
 
 storyDAO.addStory = function(story){
