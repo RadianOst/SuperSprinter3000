@@ -18,4 +18,14 @@ router.get('/story', function(req, res, next){
   res.render('story');
 });
 
+router.post('/story', function(req, res, next){
+  storyDAO.addStory(req.body)
+    .then(function(){
+      res.redirect('/');
+    })
+    .catch(function(){
+      res.render('story');
+    })
+});
+
 module.exports = router;
