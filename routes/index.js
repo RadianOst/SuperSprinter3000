@@ -36,7 +36,16 @@ router.get('/story/:id', function(req, res, next){
     .catch(function(){
       res.render('story', { story: null })
     });
+});
 
+router.post('/story/:id', function(req, res, next){
+  storyDAO.updateStory(req.params.id, req.body)
+    .then(function(){
+      res.redirect('/');
+    })
+    .catch(function(){
+      res.redirect(`/story/${req.params.id}`);
+    })
 });
 
 module.exports = router;
