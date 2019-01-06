@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/story', function(req, res, next){
-  res.render('story');
+  res.render('story', { story: null});
 });
 
 router.post('/story', function(req, res, next){
@@ -24,7 +24,7 @@ router.post('/story', function(req, res, next){
       res.redirect('/');
     })
     .catch(function(){
-      res.render('story');
+      res.render('story', { story: null});
     })
 });
 

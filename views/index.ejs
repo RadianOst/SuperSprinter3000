@@ -23,7 +23,7 @@
       <%    let story = storiesArr[i]; %>
          <tr>
            <th><%= story.id %></th>
-           <th><%= story.title %></th>
+           <th><a href="/story/<%= story.id %>"><%= story.title %></a></th>
            <th><%= story.story %></th>
            <th><%= story.criteria %></th>
            <th><%= story.value %> points</th>

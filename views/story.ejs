@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+    <% if (!story) { %>
+    <%  var story = { title: '', story: '', criteria: '', value: '', estimations: ''}; %>
+    <%  var action = "Add"; %>
+    <% } else { %>
+    <%  var action = "Update";  %>
+    <% } %>
   <head>
     <meta charset="utf-8">
-    <title>Add User Story | Super Sprinter 3000</title>
+    <title><%= action %> User Story | Super Sprinter 3000</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Add User Story</h1>
+    <h1><%= action %> User Story</h1>
     <a href="/">Back</a>
     <form method="post">
         <label for="title">Story Title:</label><br />
-        <input type="text" id="title" name="title" required><br />
+        <input type="text" id="title" name="title" value="<%= story.title %>" required><br />
         <label for="story">User Story:</label><br />
-        <textarea id="story" name="story" rows="4" cols="40" required></textarea><br>
+        <textarea id="story" name="story" rows="4" cols="40" required><%= story.story %></textarea><br>
         <label for="criteria">Acceptance Criteria:</label><br />
-        <textarea id="criteria" name="criteria" rows="6" cols="40" required></textarea><br>
+        <textarea id="criteria" name="criteria" rows="6" cols="40" required><%= story.criteria %></textarea><br>
         <label for="value">Business value:</label><br />
-        <input type="text" id="value" name="value" required size="4"><br />
+        <input type="text" id="value" name="value" value="<%= story.value %>" required size="4"><br />
         <label for="estimations">Estimations:</label><br />
-        <input type="text" id="estimations" name="estimations" required size="4"><br />
-        <input type="submit" name="" value="Add new User Story">
+        <input type="text" id="estimations" name="estimations" value="<%= story.estimations %>" required size="4"><br />
+        <% if (story.status) { %>
+          <label for="status">Status:</label><br>
+          <select id="status" name="status">
+            <option value="planning" <% if(story.status === 'planning') { %> selected <% } %>>planning</option>
+            <option value="todo" <% if(story.status === 'todo') { %> selected <% } %>>todo</option>
+            <option value="in progress" <% if(story.status === 'in progress') { %> selected <% } %>>in progress</option>
+            <option value="review" <% if(story.status === 'review') { %> selected <% } %>>review</option>
+            <option value="done" <% if(story.status === 'done') { %> selected <% } %>>done</option>
+          </select><br>
+        <% } %>
+        <input type="submit" name="" value="<%= action %><% if(action === 'Add') { %> new <% } %>User Story">
     </form>
   </body>
 </html>
