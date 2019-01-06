@@ -3,7 +3,7 @@ const { Pool } = require('pg');
 
 let storyDAO = {};
 
-const SELECT_QUERY = "SELECT * FROM stories";
+const SELECT_ALL_QUERY = "SELECT * FROM stories";
 const INSERT_QUERY = "INSERT INTO stories (title, story, criteria, value, estimations, status) " +
                      "VALUES ($1, $2, $3, $4, $5, 'planning')";
 
@@ -26,7 +26,7 @@ storyDAO.getAllStories = function(){
   return new Promise(function(resolve, reject){
     storyDAO.pool.connect((err, client, done) => {
       if (err) throw err
-      client.query(SELECT_QUERY)
+      client.query(SELECT_ALL_QUERY)
         .then(res => {
           resolve(res.rows);
         })
