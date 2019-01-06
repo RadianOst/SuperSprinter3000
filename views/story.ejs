@@ -35,7 +35,7 @@
             <option value="done" <% if(story.status === 'done') { %> selected <% } %>>done</option>
           </select><br>
         <% } %>
-        <input type="submit" name="" value="<%= action %><% if(action === 'Add') { %> new <% } %>User Story">
+        <input type="submit" name="" value="<%= action %> <% if(action === 'Add') { %>new <% } %>User Story">
     </form>
   </body>
 </html>
